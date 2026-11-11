@@ -29,7 +29,10 @@ service cloud.firestore {
       allow read: if owns(resource.data.ownerUid) || member();
       allow update: if owns(resource.data.ownerUid) && request.resource.data.ownerUid == resource.data.ownerUid;
       allow delete: if owns(resource.data.ownerUid);
-      match /private/{id} { allow read, write: if owner() || (signedIn() && getAfter(/databases/$(database)/documents/attendanceSessions/$(sessionId)).data.ownerUid == request.auth.uid); }
+      match /private/{id} {
+        allow read: if owner();
+        allow write: if signedIn() && getAfter(/databases/$(database)/documents/attendanceSessions/$(sessionId)).data.ownerUid == request.auth.uid;
+      }
       match /members/{email} {
         allow get: if owner() || (signedIn() && request.auth.token.email_verified == true && request.auth.token.email == email);
         allow list: if owner();
