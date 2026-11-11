@@ -55,7 +55,10 @@ class FirebaseAuthService implements AuthService {
         'Không thể đăng nhập Google. Kiểm tra mạng và cấu hình tài khoản.',
       );
     } on FirebaseAuthException catch (e) {
-      if (['popup-closed-by-user', 'cancelled-popup-request'].contains(e.code)) {
+      if ([
+        'popup-closed-by-user',
+        'cancelled-popup-request',
+      ].contains(e.code)) {
         throw const AppFailure('Bạn đã hủy đăng nhập.');
       }
       throw const AppFailure(

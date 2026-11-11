@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/workspace.dart';
-import '../services/drive_service.dart';
-import '../services/notification_service.dart';
+import '../viewmodels/session_vm.dart';
 import '../theme/app_theme.dart';
 import '../viewmodels/auth_vm.dart';
 import '../viewmodels/feature_vms.dart';
@@ -244,7 +243,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: Text(item.title),
                 subtitle: Text(item.body),
                 onTap: () {
-                  final target = notificationTarget(workspace, item);
+                  final target = workspace.notificationTarget(item);
                   if (target != null) {
                     Navigator.pushNamed(
                       context,
@@ -303,32 +302,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
             onPressed: workspace.busy
                 ? null
                 : () async {
-                    if (workspace.workspace?.classes.any(
-                          (c) => c.meetings.any((m) => m.linkOpen),
-                        ) ??
-                        false) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                            'Hãy dừng các link đang nhận trước khi đăng xuất.',
-                          ),
-                        ),
-                      );
-                      return;
-                    }
+                    final session = context.read<SessionVm>();
                     if (await confirmAction(
                       context,
                       'Đăng xuất?',
                       'Dữ liệu cục bộ và thông báo của tài khoản sẽ được xóa. Hãy đồng bộ hoặc xuất tệp cần giữ trước khi tiếp tục.',
                       confirm: 'Đăng xuất',
                     )) {
-                      await auth.signOut(() async {
-                        await context.read<NotificationService>().clear(
-                          workspace.uid,
-                        );
-                        await context.read<DriveService>().clear();
-                        await workspace.clear();
-                      });
+                      await session.signOut();
                     }
                   },
           ),
@@ -336,21 +317,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
-}
-
-Map<String, String>? notificationTarget(
-  WorkspaceVm workspace,
-  AppNotification notification,
-) {
-  for (final c in workspace.workspace?.visibleClasses ?? <ClassRoom>[]) {
-    if (c.id != notification.classId) continue;
-    for (final m in c.meetings) {
-      if (m.id == notification.meetingId) {
-        return {'classId': c.id, 'meetingId': m.id};
-      }
-    }
-  }
-  return null;
 }
 
 class StudentCheckInScreen extends StatefulWidget {

@@ -26,6 +26,7 @@ import 'services/notification_service.dart';
 import 'services/telemetry_service.dart';
 import 'theme/app_theme.dart';
 import 'viewmodels/auth_vm.dart';
+import 'viewmodels/session_vm.dart';
 import 'viewmodels/feature_vms.dart';
 import 'viewmodels/workspace_vm.dart';
 
@@ -112,7 +113,7 @@ class _SignedInScopeState extends State<SignedInScope> {
       await workspace.load();
       if (!mounted) return;
       opened = notifications.opened.listen((notice) {
-        final target = notificationTarget(workspace, notice);
+        final target = workspace.notificationTarget(notice);
         if (target != null) {
           navigator.currentState?.pushNamed('/attendance', arguments: target);
         }
@@ -142,6 +143,10 @@ class _SignedInScopeState extends State<SignedInScope> {
       ChangeNotifierProvider.value(value: driveVm),
       Provider.value(value: drive),
       Provider.value(value: notifications),
+      Provider(
+        create: (_) =>
+            SessionVm(context.read<AuthVm>(), workspace, notifications, drive),
+      ),
     ],
     child: Navigator(
       key: navigator,

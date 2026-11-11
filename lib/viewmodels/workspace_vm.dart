@@ -5,6 +5,7 @@ import '../services/attendance_engine.dart';
 import '../services/attendance_link_service.dart';
 import '../services/cloud_workspace_service.dart';
 import '../services/store_contract.dart';
+import '../services/notification_service.dart';
 import '../services/telemetry_service.dart';
 import 'base_vm.dart';
 
@@ -323,6 +324,21 @@ class WorkspaceVm extends BaseVm {
   ];
   bool get weekEmpty =>
       weekGrid.every((row) => row.every((cell) => cell.isEmpty));
+  bool get canSignOut =>
+      !busy &&
+      !(workspace?.classes.any((c) => c.meetings.any((m) => m.linkOpen)) ??
+          false);
+  Map<String, String>? notificationTarget(AppNotification notification) {
+    for (final c in workspace?.visibleClasses ?? <ClassRoom>[]) {
+      if (c.id != notification.classId) continue;
+      for (final m in c.meetings) {
+        if (m.id == notification.meetingId)
+          return {'classId': c.id, 'meetingId': m.id};
+      }
+    }
+    return null;
+  }
+
   bool isToday(int day) =>
       dayKey(week.add(Duration(days: day))) == dayKey(engine.now());
   Future<void> track(String event) =>
