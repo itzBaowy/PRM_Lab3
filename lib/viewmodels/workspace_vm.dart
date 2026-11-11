@@ -261,6 +261,17 @@ class WorkspaceVm extends BaseVm {
   ];
   double absenceRate(ClassRoom c, String studentId) =>
       engine.absenceRate(c, studentId);
+  List<List<List<({ClassRoom classroom, Meeting meeting})>>> get weekGrid => [
+    for (var slot = 1; slot <= 4; slot++)
+      [
+        for (var day = 0; day < 7; day++)
+          meetingsOn(week.add(Duration(days: day)), slot),
+      ],
+  ];
+  bool get weekEmpty =>
+      weekGrid.every((row) => row.every((cell) => cell.isEmpty));
+  bool isToday(int day) =>
+      dayKey(week.add(Duration(days: day))) == dayKey(engine.now());
   Future<void> track(String event) =>
       telemetry.event(event, {'screen_name': event});
   Future<void> clear() async {

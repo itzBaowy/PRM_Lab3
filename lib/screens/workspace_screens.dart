@@ -7,6 +7,7 @@ import '../viewmodels/auth_vm.dart';
 import '../viewmodels/feature_vms.dart';
 import '../viewmodels/workspace_vm.dart';
 import '../widgets/app_widgets.dart';
+import '../widgets/frozen_week_table.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -332,92 +333,63 @@ class _WeekGrid extends StatelessWidget {
   final void Function(ClassRoom, Meeting) open;
   @override
   Widget build(BuildContext context) {
-    final rows = [
-      for (var slot = 1; slot <= 4; slot++)
-        [
-          for (var day = 0; day < 7; day++)
-            vm.meetingsOn(vm.week.add(Duration(days: day)), slot),
-        ],
-    ];
-    final empty = rows.every((row) => row.every((cell) => cell.isEmpty));
-    // IntrinsicHeight shares the exact height between frozen labels and all day cells.
+    final grid = vm.weekGrid;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text('Vuốt ngang để xem đủ Thứ Hai – Chủ Nhật →'),
-        if (empty)
+        if (vm.weekEmpty)
           StatePanel(
             state: LoadState.empty,
             message: 'Chưa có lịch dạy trong tuần này. Chọn tuần khác.',
             actionLabel: 'Về tuần này',
             onRetry: () => vm.selectWeek(DateTime.now()),
           ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Table(
-            defaultColumnWidth: const FixedColumnWidth(AppSpace.dayWidth),
-            columnWidths: const {0: FixedColumnWidth(AppSpace.slotWidth)},
-            defaultVerticalAlignment: TableCellVerticalAlignment.top,
-            border: TableBorder.all(color: AppColors.border),
-            children: [
-              TableRow(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(AppSpace.sm),
-                    child: Text('Khung giờ'),
+        FrozenWeekTable(
+          labels: [
+            const Text('Khung giờ'),
+            for (var slot = 0; slot < 4; slot++)
+              Text('${slot + 1}\n${timeSlots[slot]}'),
+          ],
+          rows: [
+            [
+              for (var day = 0; day < 7; day++)
+                Container(
+                  color: vm.isToday(day) ? AppColors.soft : AppColors.surface,
+                  padding: const EdgeInsets.all(AppSpace.sm),
+                  child: Text(
+                    '${['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'][day]}\n${dayKey(vm.week.add(Duration(days: day)))}${vm.isToday(day) ? '\nHôm nay' : ''}',
                   ),
-                  for (var day = 0; day < 7; day++)
-                    Container(
-                      color:
-                          dayKey(vm.week.add(Duration(days: day))) ==
-                              dayKey(DateTime.now())
-                          ? AppColors.soft
-                          : AppColors.surface,
-                      padding: const EdgeInsets.all(AppSpace.sm),
-                      child: Text(
-                        '${['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'][day]}\n${dayKey(vm.week.add(Duration(days: day)))}${dayKey(vm.week.add(Duration(days: day))) == dayKey(DateTime.now()) ? '\nHôm nay' : ''}',
-                      ),
-                    ),
-                ],
-              ),
-              for (var slot = 0; slot < 4; slot++)
-                TableRow(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(AppSpace.sm),
-                      child: Text('${slot + 1}\n${timeSlots[slot]}'),
-                    ),
-                    for (var day = 0; day < 7; day++)
-                      Padding(
-                        padding: const EdgeInsets.all(AppSpace.xs),
-                        child: Column(
-                          children: rows[slot][day].isEmpty
-                              ? [
-                                  const Padding(
-                                    padding: EdgeInsets.all(AppSpace.lg),
-                                    child: Text('—'),
-                                  ),
-                                ]
-                              : [
-                                  for (final item in rows[slot][day])
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        bottom: AppSpace.sm,
-                                      ),
-                                      child: MeetingCell(
-                                        classroom: item.classroom,
-                                        meeting: item.meeting,
-                                        onTap: () =>
-                                            open(item.classroom, item.meeting),
-                                      ),
-                                    ),
-                                ],
-                        ),
-                      ),
-                  ],
                 ),
             ],
-          ),
+            for (final row in grid)
+              [
+                for (final cell in row)
+                  Column(
+                    children: cell.isEmpty
+                        ? [
+                            const Padding(
+                              padding: EdgeInsets.all(AppSpace.lg),
+                              child: Text('—'),
+                            ),
+                          ]
+                        : [
+                            for (final item in cell)
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: AppSpace.sm,
+                                ),
+                                child: MeetingCell(
+                                  classroom: item.classroom,
+                                  meeting: item.meeting,
+                                  onTap: () =>
+                                      open(item.classroom, item.meeting),
+                                ),
+                              ),
+                          ],
+                  ),
+              ],
+          ],
         ),
       ],
     );
