@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function owns(uid) { return signedIn() && request.auth.uid == uid; }
+    match /workspaces/{uid} {
+      allow read, delete: if owns(uid);
+      allow create: if owns(uid) && request.resource.data.ownerUid == uid
+        && request.resource.data.revision == 1
+        && request.resource.data.payload.ownerUid == uid;
+      allow update: if owns(uid) && request.resource.data.ownerUid == uid
+        && request.resource.data.payload.ownerUid == uid
+        && request.resource.data.revision == resource.data.revision + 1;
+    }
+    match /users/{uid}/devices/{deviceId} {
+      allow read, write: if owns(uid);
+    }
+    match /attendanceSessions/{sessionId} {
+      function info() { return get(/databases/$(database)/documents/attendanceSessions/$(sessionId)).data; }
+      function owner() { return owns(info().ownerUid); }
+      function member() {
+        return signedIn() && request.auth.token.email_verified == true
+          && exists(/databases/$(database)/documents/attendanceSessions/$(sessionId)/members/$(request.auth.token.email));
+      }
+      function accepting() {
+        return info().open == true && request.time < info().updatedAt + duration.value(18, 'h');
+      }
+      allow create: if signedIn() && request.resource.data.ownerUid == request.auth.uid;
+      allow read: if owns(resource.data.ownerUid) || member();
+      allow update: if owns(resource.data.ownerUid) && request.resource.data.ownerUid == resource.data.ownerUid;
+      allow delete: if owns(resource.data.ownerUid);
+      match /private/{id} { allow read, write: if owner() || (signedIn() && getAfter(/databases/$(database)/documents/attendanceSessions/$(sessionId)).data.ownerUid == request.auth.uid); }
+      match /members/{email} {
+        allow get: if owner() || (signedIn() && request.auth.token.email_verified == true && request.auth.token.email == email);
+        allow list: if owner();
+        allow write: if owner() || (signedIn() && getAfter(/databases/$(database)/documents/attendanceSessions/$(sessionId)).data.ownerUid == request.auth.uid);
+      }
+      match /visits/{uid} {
+        allow read: if owner() || owns(uid);
+        allow create, update: if owns(uid) && member() && accepting()
+          && request.resource.data.keys().hasOnly(['startedAt'])
+          && request.resource.data.startedAt == request.time;
+        allow delete: if owner();
+      }
+      match /submissions/{email} {
+        allow get: if owner() || (member() && request.auth.token.email == email);
+        allow list, delete: if owner();
+        allow create: if member() && request.auth.token.email == email && accepting()
+          && request.resource.data.keys().hasOnly(['studentId','uid','code','submittedAt'])
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.studentId == get(/databases/$(database)/documents/attendanceSessions/$(sessionId)/members/$(email)).data.studentId
+          && request.resource.data.submittedAt == request.time
+          && request.time < get(/databases/$(database)/documents/attendanceSessions/$(sessionId)/visits/$(request.auth.uid)).data.startedAt + duration.value(120, 's')
+          && (info().codeEnabled == false || request.resource.data.code == get(/databases/$(database)/documents/attendanceSessions/$(sessionId)/private/code).data.code);
+        allow update: if false;
+      }
+    }
+  }
+}
