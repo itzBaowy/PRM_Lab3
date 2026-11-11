@@ -411,6 +411,19 @@ class _ImportScreenState extends State<ImportScreen> {
       secondDay = DateTime.now().weekday % 7 + 1,
       timeSlot = 1;
   @override
+  void initState() {
+    super.initState();
+    semester.addListener(invalidate);
+    weeks.addListener(invalidate);
+  }
+
+  void invalidate() => context.read<ImportVm>().invalidatePreview();
+  void updateInput(VoidCallback change) {
+    setState(change);
+    invalidate();
+  }
+
+  @override
   void dispose() {
     semester.dispose();
     weeks.dispose();
@@ -460,33 +473,33 @@ class _ImportScreenState extends State<ImportScreen> {
                 firstDate: DateTime(2000),
                 lastDate: DateTime(2100),
               );
-              if (date != null) setState(() => start = date);
+              if (date != null) updateInput(() => start = date);
             },
           ),
           _NumberSelect(
             label: 'Slot mỗi tuần',
             value: slots,
             values: const [1, 2],
-            onChanged: (v) => setState(() => slots = v),
+            onChanged: (v) => updateInput(() => slots = v),
           ),
           _NumberSelect(
             label: 'Ngày học (1=Thứ Hai, 7=Chủ Nhật)',
             value: weekday,
             values: const [1, 2, 3, 4, 5, 6, 7],
-            onChanged: (v) => setState(() => weekday = v),
+            onChanged: (v) => updateInput(() => weekday = v),
           ),
           if (slots == 2)
             _NumberSelect(
               label: 'Ngày học thứ hai',
               value: secondDay,
               values: const [1, 2, 3, 4, 5, 6, 7],
-              onChanged: (v) => setState(() => secondDay = v),
+              onChanged: (v) => updateInput(() => secondDay = v),
             ),
           _NumberSelect(
             label: 'Khung giờ',
             value: timeSlot,
             values: const [1, 2, 3, 4],
-            onChanged: (v) => setState(() => timeSlot = v),
+            onChanged: (v) => updateInput(() => timeSlot = v),
           ),
           VmFeedback(
             vm,

@@ -21,6 +21,13 @@ class ImportVm extends BaseVm {
   final MarkbookParser parser;
   PickedMarkbook? selected;
   List<ClassRoom> preview = [];
+  void invalidatePreview() {
+    if (preview.isNotEmpty) {
+      preview = [];
+      changed();
+    }
+  }
+
   Future<bool> pick() => perform('pick_markbook', () async {
     final result = await files.pickMarkbook();
     if (result != null) {
