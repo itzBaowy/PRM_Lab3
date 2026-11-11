@@ -1,0 +1,81 @@
+Resolving dependencies...
+Downloading packages...
+  archive 3.6.1 (4.6.0 available)
+  code_assets 1.2.1 (2.2.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  equatable 2.1.0 (3.0.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.4 available)
+  petitparser 7.0.2 (7.1.0 available)
+  record_use 0.6.0 (1.1.1 available)
+  shared_preferences_foundation 2.5.7 (2.6.1 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.4 available)
+  xml 6.6.1 (7.1.0 available)
+Got dependencies!
+14 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleDebug'...
+
+D:\Projects\Lab3_PRM\android>if "Windows_NT" == "Windows_NT" setlocal
+
+D:\Projects\Lab3_PRM\android>set DEFAULT_JVM_OPTS=
+
+D:\Projects\Lab3_PRM\android>set DIRNAME=D:\Projects\Lab3_PRM\android\
+
+D:\Projects\Lab3_PRM\android>if "D:\Projects\Lab3_PRM\android\" == "" set DIRNAME=.
+
+D:\Projects\Lab3_PRM\android>set APP_BASE_NAME=gradlew
+
+D:\Projects\Lab3_PRM\android>set APP_HOME=D:\Projects\Lab3_PRM\android\
+
+D:\Projects\Lab3_PRM\android>if defined JAVA_HOME goto findJavaFromJavaHome
+
+D:\Projects\Lab3_PRM\android>set JAVA_HOME=D:/Projects/Lab3_PRM/tmp/toolchain/jdk/jdk-21.0.10+7
+
+D:\Projects\Lab3_PRM\android>set JAVA_EXE=D:/Projects/Lab3_PRM/tmp/toolchain/jdk/jdk-21.0.10+7/bin/java.exe
+
+D:\Projects\Lab3_PRM\android>if exist "D:/Projects/Lab3_PRM/tmp/toolchain/jdk/jdk-21.0.10+7/bin/java.exe" goto init
+
+D:\Projects\Lab3_PRM\android>if not "Windows_NT" == "Windows_NT" goto win9xME_args
+
+D:\Projects\Lab3_PRM\android>if "@eval[2+2]" == "4" goto 4NT_args
+
+D:\Projects\Lab3_PRM\android>set CMD_LINE_ARGS=
+
+D:\Projects\Lab3_PRM\android>set _SKIP=2
+
+D:\Projects\Lab3_PRM\android>if "x-q" == "x" goto execute
+
+D:\Projects\Lab3_PRM\android>set CMD_LINE_ARGS=-q -Ptarget-platform=android-arm,android-arm64,android-x64 -Ptarget=lib\main.dart -Pbase-application-name=android.app.Application -Pdart-defines=RkxVVFRFUl9CVUlMRF9OQU1FPTAuMS4w,RkxVVFRFUl9CVUlMRF9OVU1CRVI9MQ==,RkxVVFRFUl9WRVJTSU9OPTMuNDcuNA==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049OTU4NGM2NzEzYg==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049MDZhMmUyYTExMA==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMy4z -Pdart-obfuscation=false -Ptrack-widget-creation=true -Ptree-shake-icons=false -Pflutter.androidSdkRoot=D:/Projects/Lab3_PRM/tmp/toolchain/sdk -Pflutter.installedNdkVersions=28.2.13676358 -Pflutter.sdkManagerPath=D:/Projects/Lab3_PRM/tmp/toolchain/sdk\cmdline-tools\latest\bin\sdkmanager.bat assembleDebug
+
+D:\Projects\Lab3_PRM\android>goto execute
+
+D:\Projects\Lab3_PRM\android>set CLASSPATH=D:\Projects\Lab3_PRM\android\\gradle\wrapper\gradle-wrapper.jar
+
+D:\Projects\Lab3_PRM\android>"D:/Projects/Lab3_PRM/tmp/toolchain/jdk/jdk-21.0.10+7/bin/java.exe"    "-Dorg.gradle.appname=gradlew" -classpath "D:\Projects\Lab3_PRM\android\\gradle\wrapper\gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain -q -Ptarget-platform=android-arm,android-arm64,android-x64 -Ptarget=lib\main.dart -Pbase-application-name=android.app.Application -Pdart-defines=RkxVVFRFUl9CVUlMRF9OQU1FPTAuMS4w,RkxVVFRFUl9CVUlMRF9OVU1CRVI9MQ==,RkxVVFRFUl9WRVJTSU9OPTMuNDcuNA==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049OTU4NGM2NzEzYg==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049MDZhMmUyYTExMA==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMy4z -Pdart-obfuscation=false -Ptrack-widget-creation=true -Ptree-shake-icons=false -Pflutter.androidSdkRoot=D:/Projects/Lab3_PRM/tmp/toolchain/sdk -Pflutter.installedNdkVersions=28.2.13676358 -Pflutter.sdkManagerPath=D:/Projects/Lab3_PRM/tmp/toolchain/sdk\cmdline-tools\latest\bin\sdkmanager.bat assembleDebug
+flutter.bat : WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): firebase_analytics,
+firebase_auth, firebase_core, firebase_crashlytics, firebase_remote_config, firebase_storage
+At line:7 char:1
++ & D:/Flutter/flutter/bin/flutter.bat build apk --debug 2>&1 | Tee-Obj ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: Your a...irebase_storage:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-develop
+ers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide:
+https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+
+D:\Projects\Lab3_PRM\android>if "0" == "0" goto mainEnd
+
+D:\Projects\Lab3_PRM\android>if "Windows_NT" == "Windows_NT" endlocal
+Running Gradle task 'assembleDebug'...                              9.6s
+√ Built build\app\outputs\flutter-apk\app-debug.apk

@@ -1,0 +1,457 @@
+--- PAGE 1 ---
+SOFTWARE PROJECT  •  CHUYÊN ĐỀ
+WORKFLOW LÀ GÌ?
+Định nghĩa, nhận diện và đặc tả luồng nghiệp vụ trong đồ án phần mềm
+TRIGGER
+BƯỚC & QUYẾT ĐỊNH
+THAY ĐỔI TRẠNG THÁI
+KẾT QUẢ
+Ai làm gì, theo thứ tự nào, để đạt kết quả gì — không phải “bấm những nút nào”.
+Đi kèm bộ khung Software Project Presentation Guideline V3 (slide 06, 08, 09, 12, 21, 22)
+
+--- PAGE 2 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+ĐỊNH NGHĨA
+VÌ SAO CẦN ĐỊNH NGHĨA ĐÚNG
+Workflow là sợi chỉ nối toàn bộ đồ án
+Định nghĩa sai ở bước đầu thì thiết kế, demo và kiểm thử phía sau đều lệch theo.
+W02
+06
+Nhóm FR
+thành WF
+08
+Activity /
+BPMN
+09
+State
+machine
+12
+Sequence
+diagram
+13
+UI theo
+WF
+19
+Ma trận
+truy vết
+21
+Demo
+từng WF
+22
+Test theo
+WF / BR
+Số trên mỗi ô là số slide trong bộ khung Guideline V3.
+Khi workflow được chọn đúng
+•
+Activity diagram có rẽ nhánh theo business rule
+•
+State machine có sự kiện thật làm đối tượng đổi trạng thái
+•
+Demo kể được một câu chuyện end-to-end
+•
+Mỗi nhánh rẽ sinh ra một test case
+Khi workflow bị chọn sai
+•
+Activity diagram thành danh sách thao tác click
+•
+State machine trống hoặc vẽ cho từng màn hình
+•
+Demo đi theo menu chức năng
+•
+Test chỉ kiểm “mở được màn hình”
+
+--- PAGE 3 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+ĐỊNH NGHĨA
+ĐỊNH NGHĨA
+Workflow là chuỗi bước từ trigger đến kết quả nghiệp vụ
+W03
+Workflow (luồng nghiệp vụ) là một chuỗi bước có thứ tự, do một hoặc nhiều actor cùng hệ thống thực hiện, bắt
+đầu bằng một trigger và kết thúc bằng một kết quả nghiệp vụ có giá trị, quan sát được; trên đường đi, dữ liệu
+hoặc trạng thái của đối tượng nghiệp vụ thay đổi theo business rule.
+TRIGGER
+sự kiện khởi động
+Bước 1
+Actor A
+Bước 2
+Hệ thống
+Bước 3
+Actor B
+ quyết định theo BR
+◇
+KẾT QUẢ
+actor nhận được giá trị
++ nhánh ngoại lệ
+ĐỐI TƯỢNG NGHIỆP VỤ  DRAFT  →  SUBMITTED  →  APPROVED
+Nói ngắn gọn:  ai làm gì, theo thứ tự nào, để đạt kết quả gì — không phải “người dùng bấm những nút nào”.
+
+--- PAGE 4 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+ĐỊNH NGHĨA
+THÀNH PHẦN
+Một workflow đầy đủ có bảy thành phần
+Thiếu thành phần nào, hội đồng sẽ hỏi đúng chỗ đó.
+W04
+1
+Mã & tên
+Gọi là gì?
+WF-02 · Duyệt yêu cầu mua hàng
+2
+Actor
+Ai tham gia?
+Nhân viên, Quản lý, Hệ thống email
+3
+Trigger
+Điều gì khởi động luồng?
+Nhân viên gửi yêu cầu
+4
+Precondition
+Điều gì phải đúng trước?
+Yêu cầu ở DRAFT, có ≥ 1 dòng hàng
+5
+Bước & quyết định
+Làm gì, rẽ nhánh theo rule nào?
+Kiểm tra hạn mức (BR-03) → duyệt /
+từ chối
+6
+Kết quả
+Trạng thái nào đổi, actor nhận gì?
+Sang APPROVED, nhân viên nhận
+thông báo
+7
+Exception
+Khi sai thì sao?
+Vượt hạn mức → chuyển cấp trên
+
+--- PAGE 5 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+NHẬN DIỆN
+KIỂM TRA NHANH
+Năm câu hỏi để biết đó có phải workflow
+Chỉ gọi là workflow khi trả lời “có” cho cả năm câu.
+W05
+1
+Có trigger rõ ràng không?
+Một sự kiện cụ thể: người dùng gửi, đến hạn, hệ thống ngoài gọi vào.
+2
+Có kết thúc bằng kết quả nghiệp vụ có giá trị không?
+“Mở được màn hình X” không phải là kết quả.
+3
+Có thay đổi dữ liệu / trạng thái, hoặc một quyết định?
+Ít nhất một đối tượng nghiệp vụ khác đi sau luồng.
+4
+Có điểm rẽ nhánh theo business rule, hoặc nhánh ngoại lệ?
+Không có nhánh nào thì thường chỉ là một thao tác.
+5
+Diễn đạt được bằng ngôn ngữ nghiệp vụ, không cần tên nút?
+Người ngoài ngành nghe vẫn hiểu.
+5 / 5
+“có” → là workflow
+THIẾU CÂU NÀO?
+Thiếu câu 2 → thường là một màn hình.
+Thiếu câu 3, 4 → thường là CRUD đơn lẻ.
+Thiếu câu 5 → đang mô tả giao diện, không phải
+nghiệp vụ.
+
+--- PAGE 6 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+NHẬN DIỆN
+HAY NHẦM
+Những thứ thường bị gọi nhầm là workflow
+Chúng vẫn có chỗ trong đồ án, nhưng không phải ở vị trí của workflow.
+W06
+Bị gọi là workflow
+Thực chất là
+Vì sao chưa phải
+Nên đặt ở đâu
+“Màn hình quản lý đơn hàng”
+Một màn hình (UI)
+Không có trigger, không có kết quả
+Slide UI/UX
+“Thêm / sửa / xóa sản phẩm”
+Thao tác CRUD
+Một bước, không có quyết định nghiệp vụ
+Danh sách FR
+“Vào menu → bấm Tạo → Lưu”
+Chuỗi click (user flow)
+Mô tả giao diện, không phải nghiệp vụ
+User flow trong UI/UX
+“Đăng nhập”
+Chức năng hỗ trợ
+Không tạo giá trị nghiệp vụ
+Precondition của WF khác
+“Module báo cáo”
+Nhóm chức năng
+Quá rộng; bên trong có nhiều WF
+Nhóm feature
+Mẹo:  nếu tên chứa “màn hình”, “module”, “quản lý”, “nút” thì nhiều khả năng đó chưa phải workflow.
+
+--- PAGE 7 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+NHẬN DIỆN
+PHÂN BIỆT
+Workflow khác gì Feature, Use case, User flow, State machine?
+Mỗi khái niệm nhìn hệ thống từ một góc; workflow là trục nối chúng lại.
+W07
+Khái niệm
+Mô tả cái gì
+Quan hệ với workflow
+Sơ đồ thường dùng
+Feature / FR
+Năng lực hệ thống làm được
+Một WF dùng nhiều FR
+Danh sách FR
+Use case
+Mục tiêu của một actor trong một lần tương tác
+Một WF có thể gồm nhiều use case
+Use case diagram
+Workflow
+Chuỗi bước xuyên actor, từ trigger đến kết quả
+—
+Activity / BPMN
+User flow
+Đường đi qua các màn hình
+Hiện thực hóa phần giao diện của WF
+Flow màn hình
+State machine
+Vòng đời của một đối tượng
+WF làm đối tượng chuyển trạng thái
+State diagram
+Sequence
+Các layer bên trong phối hợp
+Mô tả “bên trong” một bước của WF
+Sequence diagram
+
+--- PAGE 8 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+ĐẶC TẢ
+ĐỘ CHI TIẾT
+Chọn workflow vừa cỡ: không quá nhỏ, không quá lớn
+Workflow lõi phải trả lời được một pain point ở phần Context & Problem.
+W08
+QUÁ NHỎ
+DẤU HIỆU
+1 bước, không có quyết định
+VÍ DỤ
+“Sửa số điện thoại”
+XỬ LÝ
+Gộp vào WF lớn hơn hoặc để ở danh sách FR
+VỪA
+DẤU HIỆU
+3–7 bước, có rẽ nhánh, gắn một pain point
+VÍ DỤ
+“Duyệt yêu cầu mua hàng”
+XỬ LÝ
+Giữ làm WF lõi: thiết kế, demo, test
+QUÁ LỚN
+DẤU HIỆU
+> 10 bước, nhiều mục tiêu, cả một module
+VÍ DỤ
+“Quản lý toàn bộ mua hàng”
+XỬ LÝ
+Tách thành nhiều WF theo kết quả
+Quy tắc:  2–4 WF lõi   •   3–7 bước mỗi WF   •   mỗi WF trả lời một pain point
+
+--- PAGE 9 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+ĐẶC TẢ
+ĐẶT TÊN
+Đặt tên theo mẫu: động từ + đối tượng nghiệp vụ
+Tên tốt đã nói lên kết quả mà workflow tạo ra.
+W09
+  CHƯA TỐT
+✗
+  TỐT
+✓
+Màn hình duyệt
+Duyệt yêu cầu mua hàng
+Module đơn hàng
+Đặt hàng và thanh toán trực tuyến
+Quản lý sản phẩm
+Nhập kho lô hàng mới
+Chức năng báo cáo
+Lập báo cáo doanh thu tháng
+Click nút Gửi
+Gửi đơn xin nghỉ phép
+Tránh trong tên:  “màn hình”, “module”, “chức năng”, “quản lý”, tên nút. Thêm ngữ cảnh khi cần (“… tháng”, “… trực tuyến”).
+
+--- PAGE 10 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+ĐẶC TẢ
+MẪU ĐẶC TẢ
+Mẫu đặc tả workflow để nhóm điền
+Một bảng cho mỗi WF lõi; dùng lại các mã FR, BR, UI, TC đã thống nhất trong đồ án.
+W10
+Trường
+Nội dung cần điền
+Gợi ý
+Mã & tên
+WF-__ · [Động từ + đối tượng]
+Không chứa “màn hình”, “module”
+Actor
+[Người / hệ thống tham gia]
+Khớp danh sách actor
+Trigger
+[Sự kiện khởi động]
+Ai / cái gì, khi nào
+Precondition
+[Điều kiện phải đúng trước]
+Thường gắn BR
+Happy path
+1. … 2. … 3. …
+3–7 bước, mỗi bước một actor
+Điểm quyết định
+[Rẽ nhánh theo BR-__]
+Mỗi nhánh → một test
+Exception
+[Sai thì sao, thông báo gì]
+Ít nhất một nhánh
+Postcondition
+[Trạng thái mới, actor nhận gì]
+Khớp state machine
+Truy vết
+FR-__ · UI-__ · Service · TC-__
+Dùng cho ma trận truy vết
+
+--- PAGE 11 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+VÍ DỤ
+VÍ DỤ HOÀN CHỈNH
+WF-02 · Duyệt yêu cầu mua hàng
+Một workflow lõi được đặc tả đủ bảy thành phần.
+W11
+ACTOR
+Nhân viên, Quản lý, Hệ thống email
+TRIGGER
+Nhân viên gửi yêu cầu
+PRECONDITION
+Yêu cầu ở DRAFT, có ≥ 1 dòng hàng (BR-02)
+POSTCONDITION
+APPROVED hoặc REJECTED, có lịch sử duyệt
+TRUY VẾT
+FR-04..06 · UI-03 · ReviewService · TC05–10
+HAPPY PATH
+1
+Nhân viên gửi yêu cầu → hệ thống chuyển SUBMITTED
+2
+Hệ thống kiểm tra hạn mức (BR-03)
+3
+Quản lý xem và duyệt → APPROVED
+4
+Hệ thống gửi email cho nhân viên
+EXCEPTION
+•
+Vượt hạn mức → chuyển cấp trên duyệt
+•
+Quản lý từ chối → REJECTED, bắt buộc ghi lý do
+•
+Thiếu dòng hàng → trả lại, không cho gửi (BR-02)
+
+--- PAGE 12 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+VÍ DỤ
+VÍ DỤ — ACTIVITY DIAGRAM
+WF-02 trên activity diagram có swimlane
+Mỗi lane là một actor; điểm quyết định ghi mã business rule.
+W12
+NHÂN VIÊN
+HỆ THỐNG
+QUẢN LÝ
+Gửi yêu cầu
+Kiểm tra dữ liệu
+Bổ sung dữ liệu
+FAIL · BR-02
+BR-03
+hạn mức?
+OK
+Cấp trên duyệt
+> hạn mức
+Quản lý duyệt / từ chối
+≤ hạn mức
+Cập nhật trạng thái + gửi
+email
+kết quả cấp trên
+Nhận kết quả
+Nét liền: luồng chính. Nét đứt: quay lại hoặc nhánh song song. Mỗi nhánh tại hình thoi sinh ra một test case.
+
+--- PAGE 13 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+VÍ DỤ
+VÍ DỤ — TRUY VẾT
+Từ workflow sang state machine và test case
+Mỗi bước làm đối tượng đổi trạng thái; mỗi business rule có test, kể cả chuyển trạng thái bị cấm.
+W13
+DRAFT
+SUBMITTED
+APPROVED
+REJECTED
+hoặc
+Bước của WF-02
+Chuyển trạng thái
+Business rule
+Test case
+Nhân viên gửi yêu cầu
+DRAFT → SUBMITTED
+BR-02 · có ≥ 1 dòng hàng
+TC05 gửi hợp lệ · TC06 thiếu dòng hàng
+Hệ thống kiểm tra hạn mức
+SUBMITTED (giữ)
+BR-03 · hạn mức theo cấp
+TC07 vượt hạn mức → cấp trên
+Quản lý duyệt
+SUBMITTED → APPROVED
+Chỉ Quản lý được duyệt
+TC08 duyệt · TC09 User không có quyền
+Quản lý từ chối
+SUBMITTED → REJECTED
+Bắt buộc ghi lý do
+TC10 từ chối thiếu lý do bị chặn
+(Chuyển bị cấm)
+DRAFT → APPROVED
+Không được bỏ qua bước gửi
+TC11 gọi API duyệt trên DRAFT bị chặn
+
+--- PAGE 14 ---
+WORKFLOW  /  ĐỊNH NGHĨA & ĐẶC TẢ LUỒNG NGHIỆP VỤ
+TỔNG KẾT
+TỰ KIỂM TRA
+Checklist trước khi chốt danh sách workflow
+Dùng khi nhóm rà lại phần thiết kế, trước buổi review với giảng viên.
+W14
+Mỗi WF đạt 5/5 câu kiểm tra nhanh
+Có 2–4 WF lõi, mỗi WF gắn một pain point
+Tên theo mẫu động từ + đối tượng nghiệp vụ
+Đủ 7 thành phần, có ít nhất một exception
+Điểm quyết định ghi mã BR
+Postcondition khớp state machine
+Mỗi nhánh rẽ có test case tương ứng
+WF trong demo trùng WF đã thiết kế
+LỖI THƯỜNG GẶP
+Gọi màn hình là workflow
+→ không có trigger và kết quả
+Chỉ vẽ happy path
+→ hội đồng hỏi “nếu sai thì sao?”
+Workflow dừng ở “lưu thành công”
+→ chưa tới kết quả cho actor
+Demo khác workflow đã thiết kế
+→ mất tính truy vết
+
+--- PAGE 15 ---
+T Ó M TẮT
+Ba điều cần nhớ về workflow
+1
+Từ trigger đến kết quả
+Workflow là chuỗi bước xuyên actor, kết
+thúc bằng giá trị nghiệp vụ — không phải
+chuỗi click.
+2
+Năm câu kiểm tra
+Trigger, kết quả, thay đổi trạng thái, rẽ
+nhánh theo BR, ngôn ngữ nghiệp vụ.
+Thiếu một câu thì chưa phải workflow.
+3
+Một WF, cả chuỗi truy vết
+Cùng một WF đi qua activity, state,
+sequence, UI, demo và test.
+Áp dụng ngay: viết lại danh sách workflow của nhóm theo mẫu đặc tả (W10) và chạy checklist (W14).
+W15

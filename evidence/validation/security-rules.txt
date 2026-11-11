@@ -1,0 +1,432 @@
+
+> test:rules
+> firebase emulators:exec --project demo-fap-attendance --only firestore,storage "node --test test_rules/security.test.mjs"
+
+[2026-11-11T15:48:51.724Z] ----------------------------------------------------------------------
+[2026-11-11T15:48:51.726Z] Command:       C:\Program Files\nodejs\node.exe D:\Projects\Lab3_PRM\node_modules\firebase-tools\lib\bin\firebase.js emulators:exec --project demo-fap-attendance --only firestore,storage node --test test_rules/security.test.mjs
+[2026-11-11T15:48:51.726Z] CLI Version:   15.35.0
+[2026-11-11T15:48:51.726Z] Platform:      win32
+[2026-11-11T15:48:51.726Z] Node Version:  v24.19.0
+[2026-11-11T15:48:51.726Z] Detected Agent: codex_cli
+[2026-11-11T15:48:51.726Z] Time:          Wed Nov 11 2026 22:48:51 GMT+0700 (Indochina Time)
+[2026-11-11T15:48:51.726Z] ----------------------------------------------------------------------
+
+[2026-11-11T15:48:52.947Z] Resolved Java binary from java.home: D:\Projects\Lab3_PRM\tmp\toolchain\jdk\jdk-21.0.10+7\bin\java.exe
+[2026-11-11T15:48:52.947Z] Parsed Java major version: 21
+i  emulators: Starting emulators: firestore, storage {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: firestore, storage"}}
+i  emulators: Detected demo project ID "demo-fap-attendance", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail. {"metadata":{"emulator":{"name":"hub"},"message":"Detected demo project ID \"demo-fap-attendance\", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail."}}
+[2026-11-11T15:48:52.961Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[2026-11-11T15:48:52.961Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[2026-11-11T15:48:52.961Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[2026-11-11T15:48:52.961Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[2026-11-11T15:48:52.961Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[2026-11-11T15:48:52.964Z] Write emulator hub locator at C:\Users\Admin\AppData\Local\Temp\hub-demo-fap-attendance.json
+[2026-11-11T15:48:52.969Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[2026-11-11T15:48:52.969Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[2026-11-11T15:48:52.969Z] Starting Firestore Emulator with command {"binary":"D:\\Projects\\Lab3_PRM\\tmp\\toolchain\\jdk\\jdk-21.0.10+7\\bin\\java.exe","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\Admin\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.22.0.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--database-edition","standard","--project_id","demo-fap-attendance","--rules","D:\\Projects\\Lab3_PRM\\firebase\\firestore.rules","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","database-edition","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":8080} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"D:\\\\Projects\\\\Lab3_PRM\\\\tmp\\\\toolchain\\\\jdk\\\\jdk-21.0.10+7\\\\bin\\\\java.exe\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\Admin\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.22.0.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--database-edition\",\"standard\",\"--project_id\",\"demo-fap-attendance\",\"--rules\",\"D:\\\\Projects\\\\Lab3_PRM\\\\firebase\\\\firestore.rules\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"database-edition\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":8080}"}}
+i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to firestore-debug.log"}}
+[2026-11-11T15:48:54.302Z] Nov 11, 2026 10:48:54 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://127.0.0.1:9150
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:54 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\r\nINFO: Started WebSocket server on ws://127.0.0.1:9150\r\n"}}
+[2026-11-11T15:48:54.348Z]
+API endpoint: http://127.0.0.1:8080 {"metadata":{"emulator":{"name":"firestore"},"message":"\nAPI endpoint: http://127.0.0.1:8080"}}
+[2026-11-11T15:48:54.348Z]
+Database Edition: STANDARD
+Database Mode: CLOUD_FIRESTORE
+
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080
+
+If you are running a Firestore in Datastore Mode project, run:
+
+   export DATASTORE_EMULATOR_HOST=127.0.0.1:8080
+
+Note: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"\nDatabase Edition: STANDARD\nDatabase Mode: CLOUD_FIRESTORE\n\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\r\n\n   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080\n\nIf you are running a Firestore in Datastore Mode project, run:\r\n\n   export DATASTORE_EMULATOR_HOST=127.0.0.1:8080\n\nNote: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.\r\nDev App Server is now running.\n\r\n"}}
++  firestore: Firestore Emulator was started in standard edition. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator was started in standard edition."}}
++  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[2026-11-11T15:48:54.398Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
+[2026-11-11T15:48:55.134Z] Temp file directory for storage emulator: C:\Users\Admin\AppData\Local\Temp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: C:\\Users\\Admin\\AppData\\Local\\Temp/firebase/storage/blobs"}}
+[2026-11-11T15:48:55.181Z] Could not find VSCode notification endpoint: TypeError: fetch failed. If you are not running the Firebase SQL Connect VSCode extension, this is expected and not an issue.
+i  Running script: node --test test_rules/security.test.mjs
+[2026-11-11T15:48:55.184Z] Running node --test test_rules/security.test.mjs with environment [REDACTED_ENVIRONMENT]
+[2026-11-11T15:48:55.484Z] Nov 11, 2026 10:48:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected non-HTTP/2 connection.\r\n"}}
+[2026-11-11T15:48:55.615Z] Nov 11, 2026 10:48:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected HTTP/2 connection.\r\n"}}
+[2026-11-11T15:48:56.576Z] Nov 11, 2026 10:48:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected HTTP/2 connection.\r\n"}}
+[2026-11-11T15:48:56.754Z] Nov 11, 2026 10:48:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:56 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected HTTP/2 connection.\r\n"}}
+[2026-11-11T15:48:56.979Z] Nov 11, 2026 10:48:56 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+WARNING: Operation failed:
+evaluation error at L11:24 for 'update' @ L11, false for 'update' @ L11
+com.google.cloud.datastore.core.exception.DatastoreException:
+evaluation error at L11:24 for 'update' @ L11, false for 'update' @ L11
+	at com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:56 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError\r\nWARNING: Operation failed: \nevaluation error at L11:24 for 'update' @ L11, false for 'update' @ L11\r\ncom.google.cloud.datastore.core.exception.DatastoreException: \nevaluation error at L11:24 for 'update' @ L11, false for 'update' @ L11\r\n\tat com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)\r\n\tat io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)\r\n\tat io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)\r\n\tat io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)\r\n\tat io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\r\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\r\n\r\n"}}
+[2026-11-11T15:48:56.982Z]  @firebase/firestore: Firestore (13.2.0): GrpcConnection RPC 'Write' stream 0x8a62e969 error. Code: 7 Message: 7 PERMISSION_DENIED:
+evaluation error at L11:24 for 'update' @ L11, false for 'update' @ L11
+✔ workspace requires matching owner and monotonically increasing revision (1637.7843ms)
+✔ verified member can read own details but never private code or another member (138.7415ms)
+✔ outsider and unverified identities cannot open session (92.9846ms)
+[2026-11-11T15:48:57.381Z] Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+WARNING: Operation failed:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, Null value error. for 'create' @ L51
+com.google.cloud.datastore.core.exception.DatastoreException:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, Null value error. for 'create' @ L51
+	at com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.google.firebase.rules.runtime.common.EvaluationException: Error:  line [56], column [29]. Null value error.
+	at com.google.firebase.rules.runtime.impl.DefaultEvaluator$TransformEvaluationException.apply(DefaultEvaluator.java:275)
+	at com.google.firebase.rules.runtime.impl.DefaultEvaluator$TransformEvaluationException.apply(DefaultEvaluator.java:261)
+	at com.google.common.util.concurrent.AbstractCatchingFuture$AsyncCatchingFuture.doFallback(AbstractCatchingFuture.java:207)
+	at com.google.common.util.concurrent.AbstractCatchingFuture$AsyncCatchingFuture.doFallback(AbstractCatchingFuture.java:194)
+	at com.google.common.util.concurrent.AbstractCatchingFuture.run(AbstractCatchingFuture.java:136)
+	at com.google.common.util.concurrent.DirectExecutor.execute(DirectExecutor.java:30)
+	at com.google.common.util.concurrent.AbstractFuture.executeListener(AbstractFuture.java:1045)
+	at com.google.common.util.concurrent.AbstractFuture.addListener(AbstractFuture.java:492)
+	at com.google.common.util.concurrent.FluentFuture$TrustedFuture.addListener(FluentFuture.java:122)
+	at com.google.common.util.concurrent.AbstractCatchingFuture.createAsync(AbstractCatchingFuture.java:58)
+	at com.google.common.util.concurrent.Futures.catchingAsync(Futures.java:411)
+	at com.google.firebase.rules.runtime.impl.DefaultEvaluator.evaluate(DefaultEvaluator.java:177)
+	at com.google.cloud.datastore.emulator.impl.rules.EmulatorRuleClient$EmulatorRuleEvaluator.evaluate(EmulatorRuleClient.java:88)
+	at com.google.cloud.datastore.core.auth.rules.AsyncTwoPhaseRulesAuthorizer.lambda$fullEvaluate$0(AsyncTwoPhaseRulesAuthorizer.java:993)
+	at com.google.cloud.datastore.computation.Computation.tryCatch(Computation.java:472)
+	at com.google.cloud.datastore.core.auth.rules.AsyncTwoPhaseRulesAuthorizer.fullEvaluate(AsyncTwoPhaseRulesAuthorizer.java:992)
+	at com.google.cloud.datastore.core.auth.rules.AsyncTwoPhaseRulesAuthorizer$WriteAuthorizerImpl.lambda$checkWrite$0(AsyncTwoPhaseRulesAuthorizer.java:1227)
+	at com.google.cloud.datastore.computation.Computation.lambda$tryClose$1(Computation.java:741)
+	at com.google.cloud.datastore.computation.Computation.tryCatch(Computation.java:472)
+	at com.google.cloud.datastore.computation.Computation.tryFinally(Computation.java:708)
+	at com.google.cloud.datastore.computation.Computation.tryFinally(Computation.java:714)
+	at com.google.cloud.datastore.computation.Computation.tryClose(Computation.java:741)
+	at com.google.cloud.datastore.core.auth.rules.AsyncTwoPhaseRulesAuthorizer$WriteAuthorizerImpl.checkWrite(AsyncTwoPhaseRulesAuthorizer.java:1199)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.lambda$checkCommit$2(DefaultEmulatorRulesAuthorizer.java:124)
+	at com.google.cloud.datastore.computation.Computation.run(Computation.java:82)
+	at com.google.cloud.datastore.computation.Computation$Terminated.toFuture(Computation.java:950)
+	at com.google.cloud.datastore.computation.Computation.toFuture(Computation.java:93)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.finish(DefaultEmulatorRulesAuthorizer.java:308)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.lambda$checkCommit$0(DefaultEmulatorRulesAuthorizer.java:122)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:321)
+	... 22 more
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError\r\nWARNING: Operation failed: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, Null value error. for 'create' @ L51\r\ncom.google.cloud.datastore.core.exception.DatastoreException: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, Null value error. for 'create' @ L51\r\n\tat com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)\r\n\tat io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)\r\n\tat io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)\r\n\tat io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)\r\n\tat io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\r\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\r\nCaused by: com.google.firebase.rules.runtime.common.EvaluationException: Error:  line [56], column [29]. Null value error.\r\n\tat com.google.firebase.rules.runtime.impl.DefaultEvaluator$TransformEvaluationException.apply(DefaultEvaluator.java:275)\r\n\tat com.google.firebase.rules.runtime.impl.DefaultEvaluator$TransformEvaluationException.apply(DefaultEvaluator.java:261)\r\n\tat com.google.common.util.concurrent.AbstractCatchingFuture$AsyncCatchingFuture.doFallback(AbstractCatchingFuture.java:207)\r\n\tat com.google.common.util.concurrent.AbstractCatchingFuture$AsyncCatchingFuture.doFallback(AbstractCatchingFuture.java:194)\r\n\tat com.google.common.util.concurrent.AbstractCatchingFuture.run(AbstractCatchingFuture.java:136)\r\n\tat com.google.common.util.concurrent.DirectExecutor.execute(DirectExecutor.java:30)\r\n\tat com.google.common.util.concurrent.AbstractFuture.executeListener(AbstractFuture.java:1045)\r\n\tat com.google.common.util.concurrent.AbstractFuture.addListener(AbstractFuture.java:492)\r\n\tat com.google.common.util.concurrent.FluentFuture$TrustedFuture.addListener(FluentFuture.java:122)\r\n\tat com.google.common.util.concurrent.AbstractCatchingFuture.createAsync(AbstractCatchingFuture.java:58)\r\n\tat com.google.common.util.concurrent.Futures.catchingAsync(Futures.java:411)\r\n\tat com.google.firebase.rules.runtime.impl.DefaultEvaluator.evaluate(DefaultEvaluator.java:177)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.EmulatorRuleClient$EmulatorRuleEvaluator.evaluate(EmulatorRuleClient.java:88)\r\n\tat com.google.cloud.datastore.core.auth.rules.AsyncTwoPhaseRulesAuthorizer.lambda$fullEvaluate$0(AsyncTwoPhaseRulesAuthorizer.java:993)\r\n\tat com.google.cloud.datastore.computation.Computation.tryCatch(Computation.java:472)\r\n\tat com.google.cloud.datastore.core.auth.rules.AsyncTwoPhaseRulesAuthorizer.fullEvaluate(AsyncTwoPhaseRulesAuthorizer.java:992)\r\n\tat com.google.cloud.datastore.core.auth.rules.AsyncTwoPhaseRulesAuthorizer$WriteAuthorizerImpl.lambda$checkWrite$0(AsyncTwoPhaseRulesAuthorizer.java:1227)\r\n\tat com.google.cloud.datastore.computation.Computation.lambda$tryClose$1(Computation.java:741)\r\n\tat com.google.cloud.datastore.computation.Computation.tryCatch(Computation.java:472)\r\n\tat com.google.cloud.datastore.computation.Computation.tryFinally(Computation.java:708)\r\n\tat com.google.cloud.datastore.computation.Computation.tryFinally(Computation.java:714)\r\n\tat com.google.cloud.datastore.computation.Computation.tryClose(Computation.java:741)\r\n\tat com.google.cloud.datastore.core.auth.rules.AsyncTwoPhaseRulesAuthorizer$WriteAuthorizerImpl.checkWrite(AsyncTwoPhaseRulesAuthorizer.java:1199)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.lambda$checkCommit$2(DefaultEmulatorRulesAuthorizer.java:124)\r\n\tat com.google.cloud.datastore.computation.Computation.run(Computation.java:82)\r\n\tat com.google.cloud.datastore.computation.Computation$Terminated.toFuture(Computation.java:950)\r\n\tat com.google.cloud.datastore.computation.Computation.toFuture(Computation.java:93)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.finish(DefaultEmulatorRulesAuthorizer.java:308)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.lambda$checkCommit$0(DefaultEmulatorRulesAuthorizer.java:122)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:321)\r\n\t... 22 more\r\n\r\n"}}
+[2026-11-11T15:48:57.382Z]  @firebase/firestore: Firestore (13.2.0): GrpcConnection RPC 'Write' stream 0x8a62e973 error. Code: 7 Message: 7 PERMISSION_DENIED:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, Null value error. for 'create' @ L51
+[2026-11-11T15:48:57.407Z] Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+WARNING: Operation failed:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+com.google.cloud.datastore.core.exception.DatastoreException:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+	at com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError\r\nWARNING: Operation failed: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51\r\ncom.google.cloud.datastore.core.exception.DatastoreException: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51\r\n\tat com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)\r\n\tat io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)\r\n\tat io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)\r\n\tat io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)\r\n\tat io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\r\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\r\n\r\n"}}
+[2026-11-11T15:48:57.408Z]  @firebase/firestore: Firestore (13.2.0): GrpcConnection RPC 'Write' stream 0x8a62e974 error. Code: 7 Message: 7 PERMISSION_DENIED:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+[2026-11-11T15:48:57.437Z] Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+WARNING: Operation failed:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'update' @ L58
+com.google.cloud.datastore.core.exception.DatastoreException:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'update' @ L58
+	at com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError\r\nWARNING: Operation failed: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'update' @ L58\r\ncom.google.cloud.datastore.core.exception.DatastoreException: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'update' @ L58\r\n\tat com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)\r\n\tat io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)\r\n\tat io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)\r\n\tat io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)\r\n\tat io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\r\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\r\n\r\n"}}
+[2026-11-11T15:48:57.438Z]  @firebase/firestore: Firestore (13.2.0): GrpcConnection RPC 'Write' stream 0x8a62e975 error. Code: 7 Message: 7 PERMISSION_DENIED:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'update' @ L58
+✔ submission requires a visit, correct code and rejects duplicate writes (114.0578ms)
+[2026-11-11T15:48:57.511Z] Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+WARNING: Operation failed:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+com.google.cloud.datastore.core.exception.DatastoreException:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+	at com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError\r\nWARNING: Operation failed: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51\r\ncom.google.cloud.datastore.core.exception.DatastoreException: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51\r\n\tat com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)\r\n\tat io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)\r\n\tat io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)\r\n\tat io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)\r\n\tat io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\r\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\r\n\r\n"}}
+[2026-11-11T15:48:57.512Z]  @firebase/firestore: Firestore (13.2.0): GrpcConnection RPC 'Write' stream 0x8a62e978 error. Code: 7 Message: 7 PERMISSION_DENIED:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+[2026-11-11T15:48:57.583Z] Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+WARNING: Operation failed:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+com.google.cloud.datastore.core.exception.DatastoreException:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+	at com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError\r\nWARNING: Operation failed: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51\r\ncom.google.cloud.datastore.core.exception.DatastoreException: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51\r\n\tat com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)\r\n\tat io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)\r\n\tat io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)\r\n\tat io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)\r\n\tat io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\r\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\r\n\r\n"}}
+[2026-11-11T15:48:57.584Z]  @firebase/firestore: Firestore (13.2.0): GrpcConnection RPC 'Write' stream 0x8a62e97b error. Code: 7 Message: 7 PERMISSION_DENIED:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+[2026-11-11T15:48:57.610Z] Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+WARNING: Operation failed:
+evaluation error at L43:34 for 'create' @ L43, evaluation error at L43:34 for 'update' @ L43, false for 'update' @ L43
+com.google.cloud.datastore.core.exception.DatastoreException:
+evaluation error at L43:34 for 'create' @ L43, evaluation error at L43:34 for 'update' @ L43, false for 'update' @ L43
+	at com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError\r\nWARNING: Operation failed: \nevaluation error at L43:34 for 'create' @ L43, evaluation error at L43:34 for 'update' @ L43, false for 'update' @ L43\r\ncom.google.cloud.datastore.core.exception.DatastoreException: \nevaluation error at L43:34 for 'create' @ L43, evaluation error at L43:34 for 'update' @ L43, false for 'update' @ L43\r\n\tat com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)\r\n\tat io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)\r\n\tat io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)\r\n\tat io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)\r\n\tat io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\r\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\r\n\r\n"}}
+[2026-11-11T15:48:57.611Z]  @firebase/firestore: Firestore (13.2.0): GrpcConnection RPC 'Write' stream 0x8a62e97c error. Code: 7 Message: 7 PERMISSION_DENIED:
+evaluation error at L43:34 for 'create' @ L43, evaluation error at L43:34 for 'update' @ L43, false for 'update' @ L43
+✔ expired two-minute visit or meeting cannot submit (173.0002ms)
+[2026-11-11T15:48:57.699Z] Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+WARNING: Operation failed:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+com.google.cloud.datastore.core.exception.DatastoreException:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+	at com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError\r\nWARNING: Operation failed: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51\r\ncom.google.cloud.datastore.core.exception.DatastoreException: \nevaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51\r\n\tat com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)\r\n\tat io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)\r\n\tat io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)\r\n\tat io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)\r\n\tat io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\r\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\r\n\r\n"}}
+[2026-11-11T15:48:57.700Z]  @firebase/firestore: Firestore (13.2.0): GrpcConnection RPC 'Write' stream 0x8a62e97e error. Code: 7 Message: 7 PERMISSION_DENIED:
+evaluation error at L51:26 for 'create' @ L51, false for 'update' @ L58, false for 'create' @ L51
+[2026-11-11T15:48:57.718Z] Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError
+WARNING: Operation failed:
+evaluation error at L30:24 for 'update' @ L30, false for 'update' @ L30
+com.google.cloud.datastore.core.exception.DatastoreException:
+evaluation error at L30:24 for 'update' @ L30, false for 'update' @ L30
+	at com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)
+	at com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)
+	at com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)
+	at com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)
+	at io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 11, 2026 10:48:57 PM com.google.cloud.datastore.emulator.impl.util.WrappedStreamObserver onError\r\nWARNING: Operation failed: \nevaluation error at L30:24 for 'update' @ L30, false for 'update' @ L30\r\ncom.google.cloud.datastore.core.exception.DatastoreException: \nevaluation error at L30:24 for 'update' @ L30, false for 'update' @ L30\r\n\tat com.google.cloud.datastore.core.exception.DatastoreException$Builder.build(DatastoreException.java:152)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.verboseError(DefaultEmulatorRulesAuthorizer.java:349)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.withVerboseErrors(DefaultEmulatorRulesAuthorizer.java:326)\r\n\tat com.google.cloud.datastore.emulator.impl.rules.DefaultEmulatorRulesAuthorizer.checkCommit(DefaultEmulatorRulesAuthorizer.java:113)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.commitHelper(FirestoreEmulatorHelper.java:407)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.FirestoreEmulatorHelper.internalCommit(FirestoreEmulatorHelper.java:348)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.internalCommit(CloudFirestoreV1.java:1336)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1.write(CloudFirestoreV1.java:1321)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.handleRequest(CloudFirestoreV1WriteStream.java:222)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.write(CloudFirestoreV1WriteStream.java:144)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:99)\r\n\tat com.google.cloud.datastore.emulator.impl.firestore.CloudFirestoreV1WriteStream.onNext(CloudFirestoreV1WriteStream.java:27)\r\n\tat io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.ForwardingServerCallListener.onMessage(ForwardingServerCallListener.java:33)\r\n\tat io.grpc.Contexts$ContextualizedServerCallListener.onMessage(Contexts.java:76)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)\r\n\tat io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)\r\n\tat io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:852)\r\n\tat io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)\r\n\tat io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)\r\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\r\n\r\n"}}
+[2026-11-11T15:48:57.719Z]  @firebase/firestore: Firestore (13.2.0): GrpcConnection RPC 'Write' stream 0x8a62e980 error. Code: 7 Message: 7 PERMISSION_DENIED:
+evaluation error at L30:24 for 'update' @ L30, false for 'update' @ L30
+✔ stopped session rejects submissions and client cannot reopen (107.3021ms)
+✔ owner can create a session and private roster in a single batch (56.5244ms)
+✔ Storage isolates owner paths and permits only generated report MIME types (236.0963ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2809.4481
++  Script exited successfully (code 0)
+i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+i  firestore: Stopping Firestore Emulator {"metadata":{"emulator":{"name":"firestore"},"message":"Stopping Firestore Emulator"}}
+!  Firestore Emulator has exited upon receiving signal: SIGINT
+i  storage: Stopping Storage Emulator {"metadata":{"emulator":{"name":"storage"},"message":"Stopping Storage Emulator"}}
+[2026-11-11T15:48:58.574Z] Stopping rules runtime. {"metadata":{"emulator":{"name":"storage"},"message":"Stopping rules runtime."}}
+i  hub: Stopping emulator hub {"metadata":{"emulator":{"name":"hub"},"message":"Stopping emulator hub"}}
+i  logging: Stopping Logging Emulator {"metadata":{"emulator":{"name":"logging"},"message":"Stopping Logging Emulator"}}
+[2026-11-11T15:48:58.592Z] Could not find VSCode notification endpoint: TypeError: fetch failed. If you are not running the Firebase SQL Connect VSCode extension, this is expected and not an issue.
+[2026-11-11T15:48:58.606Z] Found emulator hub locator: {"version":"15.35.0","origins":["http://127.0.0.1:4400","http://[::1]:4400"],"pid":35300}
+[2026-11-11T15:48:58.606Z] Delete emulator hub locator file: C:\Users\Admin\AppData\Local\Temp\hub-demo-fap-attendance.json

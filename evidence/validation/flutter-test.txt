@@ -1,0 +1,57 @@
+Resolving dependencies...
+Downloading packages...
+  archive 3.6.1 (4.6.0 available)
+  code_assets 1.2.1 (2.2.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  equatable 2.1.0 (3.0.0 available)
+  hooks 2.0.2 (2.2.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.4 available)
+  petitparser 7.0.2 (7.1.0 available)
+  record_use 0.6.0 (1.1.1 available)
+  shared_preferences_foundation 2.5.7 (2.6.1 available)
+  test_api 0.7.12 (0.7.15 available)
+  vector_math 2.4.0 (2.4.4 available)
+  xml 6.6.1 (7.1.0 available)
+Got dependencies!
+14 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading D:/Projects/Lab3_PRM/test/attendance_engine_test.dart
+00:00 +0: D:/Projects/Lab3_PRM/test/attendance_engine_test.dart: BR01 unknown remains unknown until finalize
+00:00 +1: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +2: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +3: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +4: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +5: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +6: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +7: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +8: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +9: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +10: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +11: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +12: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +13: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +14: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +15: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +16: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +17: D:/Projects/Lab3_PRM/test/import_export_test.dart: XLSX reads actual workbook bytes
+00:00 +18: D:/Projects/Lab3_PRM/test/import_export_test.dart: ODS reads actual zipped content xml
+00:00 +19: D:/Projects/Lab3_PRM/test/import_export_test.dart: invalid workbook fails with actionable message
+00:00 +20: D:/Projects/Lab3_PRM/test/import_export_test.dart: duplicate student rejected before mutation
+00:00 +21: D:/Projects/Lab3_PRM/test/import_export_test.dart: JSON export matches closed roster and metadata
+00:00 +22: D:/Projects/Lab3_PRM/test/import_export_test.dart: export rejects unfinished meeting
+00:00 +23: D:/Projects/Lab3_PRM/test/import_export_test.dart: CSV protects formula cells and escapes double quotes
+00:00 +24: D:/Projects/Lab3_PRM/test/widget_test.dart: (setUpAll)
+00:00 +24: D:/Projects/Lab3_PRM/test/widget_test.dart: roster 360dp preserves long names and P/A selection
+00:00 +25: D:/Projects/Lab3_PRM/test/widget_test.dart: roster 360dp preserves long names and P/A selection
+00:00 +26: D:/Projects/Lab3_PRM/test/widget_test.dart: roster 360dp preserves long names and P/A selection
+00:00 +27: D:/Projects/Lab3_PRM/test/widget_test.dart: roster 360dp preserves long names and P/A selection
+00:00 +28: D:/Projects/Lab3_PRM/test/widget_test.dart: roster 360dp preserves long names and P/A selection
+00:00 +29: D:/Projects/Lab3_PRM/test/widget_test.dart: roster 360dp preserves long names and P/A selection
+00:01 +30: D:/Projects/Lab3_PRM/test/widget_test.dart: roster 412dp preserves long names and P/A selection
+00:01 +31: D:/Projects/Lab3_PRM/test/widget_test.dart: edit sheet rejects blank reason and cancel leaves original data
+00:01 +32: D:/Projects/Lab3_PRM/test/widget_test.dart: calendar keeps time labels fixed and synchronizes horizontal rows
+00:01 +33: D:/Projects/Lab3_PRM/test/widget_test.dart: home calendar screenshot has no overflow at 360dp
+00:01 +34: D:/Projects/Lab3_PRM/test/widget_test.dart: (tearDownAll)
+00:01 +34: All tests passed!

@@ -1,0 +1,15 @@
+[project]
+name = "fap-attendance-artemis-tests"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "pytest==8.3.5",
+  "pytest-asyncio==0.26.0",
+  "artemis-client @ git+https://github.com/google/artemis.git@351ca8422f7b5b54e80a9c1ce03a222e02415b6b#subdirectory=packages/artemis-client",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["."]
+markers = ["exploratory: opt-in 15–30 minute Pro session"]
