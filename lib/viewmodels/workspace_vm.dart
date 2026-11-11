@@ -50,7 +50,7 @@ class WorkspaceVm extends BaseVm {
         ? LoadState.empty
         : LoadState.data;
     _poll ??= Timer.periodic(const Duration(seconds: 8), (_) {
-      if (!busy) unawaited(receiveLinks());
+      if (!busy && needsRefresh) unawaited(receiveLinks());
     });
   }, loading: true);
 
@@ -145,7 +145,10 @@ class WorkspaceVm extends BaseVm {
     final current = workspace!.meeting(classId, meetingId);
     if (current.linkId == null || links == null) return;
     if (stop) await links!.stop(current.linkId!);
-    final ids = await links!.submissions(current.linkId!);
+    final ids = await links!
+        .submissions(current.linkId!)
+        .timeout(const Duration(seconds: 15));
+    if (!stop && ids.every(current.records.containsKey)) return;
     await _persist((w) {
       final c = w.classroom(classId), m = w.meeting(classId, meetingId);
       // Accept submissions that committed before the server-side stop.
@@ -226,6 +229,16 @@ class WorkspaceVm extends BaseVm {
       await _persist(engine.rollover);
     }
   });
+  bool get needsRefresh =>
+      workspace?.visibleClasses.any(
+        (c) => c.meetings.any(
+          (m) =>
+              m.linkOpen ||
+              (m.state != MeetingState.closed &&
+                  m.date.isBefore(dateOnly(engine.now()))),
+        ),
+      ) ??
+      false;
   Future<bool> archive(String classId) => perform(
     'archive_class',
     () => _persist((w) => engine.archive(w.classroom(classId))),
