@@ -80,11 +80,13 @@ class LinkVm extends BaseVm {
     String classId,
     String meetingId,
   ) => perform('create_link', () async {
-    final c = workspace.workspace!.classroom(classId),
-        m = workspace.workspace!.meeting(classId, meetingId);
-    final result = await links.create(c, m, withCode);
-    await workspace.attachLink(classId, meetingId, result);
+    final result = await workspace.createLink(classId, meetingId, withCode);
+    if (result == null)
+      throw AppFailure(
+        workspace.error ?? 'Đang xử lý thao tác khác. Hãy thử lại.',
+      );
     current = result;
+    withCode = result.code != null;
     state = LoadState.data;
     await telemetry.event('create_attendance_link', {
       'code_enabled': withCode ? 1 : 0,

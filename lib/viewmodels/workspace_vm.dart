@@ -29,6 +29,7 @@ class WorkspaceVm extends BaseVm {
   String rosterQuery = '';
   bool manualMode = true;
   Timer? _poll;
+  Timer? _searchDebounce;
 
   Future<bool> load() => perform('load_workspace', () async {
     workspace = await store.load(uid);
@@ -173,15 +174,39 @@ class WorkspaceVm extends BaseVm {
       });
   Future<bool> stopLink(String classId, String meetingId) =>
       perform('stop_link', () => _drain(classId, meetingId, stop: true));
-  Future<void> attachLink(
+  Future<LinkSession?> createLink(
     String classId,
     String meetingId,
-    LinkSession session,
-  ) async => _persist((w) {
-    final m = w.meeting(classId, meetingId);
-    m.linkId = session.id;
-    m.linkOpen = true;
-  });
+    bool withCode,
+  ) async {
+    LinkSession? result;
+    await perform('create_attendance_link', () async {
+      if (links == null)
+        throw const AppFailure('Chưa kết nối dịch vụ điểm danh.');
+      final m = workspace!.meeting(classId, meetingId);
+      final wasOpen = m.linkOpen;
+      final created = await links!.create(
+        workspace!.classroom(classId),
+        m,
+        withCode,
+      );
+      try {
+        await _persist((w) {
+          final target = w.meeting(classId, meetingId);
+          if (target.state != MeetingState.active)
+            throw const AppFailure('Buổi học không còn đang điểm danh.');
+          target.linkId = created.id;
+          target.linkOpen = true;
+        });
+      } catch (_) {
+        if (!wasOpen) await links!.stop(created.id);
+        rethrow;
+      }
+      result = created;
+    });
+    return result;
+  }
+
   Future<bool> receiveLinks() => perform('receive_links', () async {
     for (final c in [...?workspace?.visibleClasses]) {
       for (final m in c.meetings.where((m) => m.linkOpen)) {
@@ -247,6 +272,21 @@ class WorkspaceVm extends BaseVm {
   void search(String query) {
     rosterQuery = query;
     changed();
+    _searchDebounce?.cancel();
+    _searchDebounce = Timer(const Duration(milliseconds: 600), () {
+      final count =
+          workspace?.visibleClasses.fold<int>(
+            0,
+            (n, c) => n + engine.search(c, query).length,
+          ) ??
+          0;
+      unawaited(
+        telemetry.event('search', {
+          'query_length': query.trim().length,
+          'result_count': count,
+        }),
+      );
+    });
   }
 
   List<Student> roster(ClassRoom c) => engine.search(c, rosterQuery);
@@ -283,6 +323,7 @@ class WorkspaceVm extends BaseVm {
   @override
   void dispose() {
     _poll?.cancel();
+    _searchDebounce?.cancel();
     super.dispose();
   }
 }
