@@ -81,10 +81,11 @@ class LinkVm extends BaseVm {
     String meetingId,
   ) => perform('create_link', () async {
     final result = await workspace.createLink(classId, meetingId, withCode);
-    if (result == null)
+    if (result == null) {
       throw AppFailure(
         workspace.error ?? 'Đang xử lý thao tác khác. Hãy thử lại.',
       );
+    }
     current = result;
     withCode = result.code != null;
     state = LoadState.data;

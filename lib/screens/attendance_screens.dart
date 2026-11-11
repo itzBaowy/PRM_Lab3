@@ -459,7 +459,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   ),
                   Text(timeSlots[m.timeSlot - 1]),
                   Text('${meetingLabel(m)} · P ${m.present} / A ${m.absent}'),
-                  const Text('Mở buổi học →'),
+                  const Text('Mở buổi học'),
                 ],
               ),
             ),
@@ -529,7 +529,7 @@ class _StudentScreenState extends State<StudentScreen> {
                           .map(
                             (a) => ListTile(
                               title: Text(
-                                '${markLabel(a.before)} → ${markLabel(a.after)}',
+                                '${markLabel(a.before)} đến ${markLabel(a.after)}',
                               ),
                               subtitle: Text('${a.reason}\n${a.at.toLocal()}'),
                             ),

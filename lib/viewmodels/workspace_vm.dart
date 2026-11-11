@@ -185,8 +185,9 @@ class WorkspaceVm extends BaseVm {
   ) async {
     LinkSession? result;
     await perform('create_attendance_link', () async {
-      if (links == null)
+      if (links == null) {
         throw const AppFailure('Chưa kết nối dịch vụ điểm danh.');
+      }
       final m = workspace!.meeting(classId, meetingId);
       final wasOpen = m.linkOpen;
       final created = await links!.create(
@@ -197,8 +198,9 @@ class WorkspaceVm extends BaseVm {
       try {
         await _persist((w) {
           final target = w.meeting(classId, meetingId);
-          if (target.state != MeetingState.active)
+          if (target.state != MeetingState.active) {
             throw const AppFailure('Buổi học không còn đang điểm danh.');
+          }
           target.linkId = created.id;
           target.linkOpen = true;
         });
@@ -332,8 +334,9 @@ class WorkspaceVm extends BaseVm {
     for (final c in workspace?.visibleClasses ?? <ClassRoom>[]) {
       if (c.id != notification.classId) continue;
       for (final m in c.meetings) {
-        if (m.id == notification.meetingId)
+        if (m.id == notification.meetingId) {
           return {'classId': c.id, 'meetingId': m.id};
+        }
       }
     }
     return null;

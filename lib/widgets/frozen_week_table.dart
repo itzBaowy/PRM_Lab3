@@ -24,10 +24,11 @@ class _FrozenWeekTableState extends State<FrozenWeekTable> {
         if (syncing || !source.hasClients) return;
         syncing = true;
         for (final target in controllers) {
-          if (target != source && target.hasClients)
+          if (target != source && target.hasClients) {
             target.jumpTo(
               source.offset.clamp(0, target.position.maxScrollExtent),
             );
+          }
         }
         syncing = false;
       });

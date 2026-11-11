@@ -186,7 +186,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  '${dayKey(vm.week)} → ${dayKey(vm.week.add(const Duration(days: 6)))}',
+                  '${dayKey(vm.week)} đến ${dayKey(vm.week.add(const Duration(days: 6)))}',
                 ),
               ),
               IconButton(
@@ -337,7 +337,7 @@ class _WeekGrid extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Vuốt ngang để xem đủ Thứ Hai – Chủ Nhật →'),
+        const Text('Vuốt ngang để xem đủ Thứ Hai – Chủ Nhật'),
         if (vm.weekEmpty)
           StatePanel(
             state: LoadState.empty,

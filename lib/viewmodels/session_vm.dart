@@ -11,10 +11,11 @@ class SessionVm {
   final NotificationService notifications;
   final DriveService drive;
   Future<bool> signOut() => auth.signOut(() async {
-    if (!workspace.canSignOut)
+    if (!workspace.canSignOut) {
       throw const AppFailure(
         'Hãy dừng các link đang nhận trước khi đăng xuất.',
       );
+    }
     await notifications.clear(workspace.uid);
     await drive.clear();
     await workspace.clear();

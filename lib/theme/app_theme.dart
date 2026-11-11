@@ -71,6 +71,11 @@ ThemeData buildAppTheme() {
   );
   return ThemeData(
     useMaterial3: true,
+    segmentedButtonTheme: SegmentedButtonThemeData(
+      style: SegmentedButton.styleFrom(
+        minimumSize: const Size(AppSpace.touch, AppSpace.touch),
+      ),
+    ),
     colorScheme: scheme,
     scaffoldBackgroundColor: AppColors.background,
     fontFamily: 'Roboto',
