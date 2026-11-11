@@ -4,6 +4,12 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// A missing project config builds the explicit setup screen, never a fake account.
+if (file("google-services.json").exists()) {
+    apply(plugin = "com.google.gms.google-services")
+    apply(plugin = "com.google.firebase.crashlytics")
+}
+
 android {
     namespace = "vn.edu.fpt.fap_attendance"
     compileSdk = flutter.compileSdkVersion
