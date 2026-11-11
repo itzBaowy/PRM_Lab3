@@ -23,7 +23,7 @@ service cloud.firestore {
           && exists(/databases/$(database)/documents/attendanceSessions/$(sessionId)/members/$(request.auth.token.email));
       }
       function accepting() {
-        return info().open == true && request.time < info().updatedAt + duration.value(18, 'h');
+        return info().open == true && request.time < info().expiresAt;
       }
       allow create: if signedIn() && request.resource.data.ownerUid == request.auth.uid;
       allow read: if owns(resource.data.ownerUid) || member();

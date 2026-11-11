@@ -15,7 +15,7 @@ beforeEach(async () => {
   await env.clearFirestore();
   await env.withSecurityRulesDisabled(async context => {
     const db = context.firestore();
-    await setDoc(doc(db,'attendanceSessions/session1'),{ownerUid:owner,open:true,codeEnabled:true,updatedAt:Timestamp.now()});
+    await setDoc(doc(db,'attendanceSessions/session1'),{ownerUid:owner,open:true,codeEnabled:true,updatedAt:Timestamp.now(),expiresAt:Timestamp.fromMillis(Date.now()+3600000)});
     await setDoc(doc(db,`attendanceSessions/session1/members/${email}`),{studentId:'SE000001',name:'Test Student'});
     await setDoc(doc(db,'attendanceSessions/session1/private/code'),{code:'123456'});
   });
@@ -53,9 +53,13 @@ test('submission requires a visit, correct code and rejects duplicate writes', a
   await assertSucceeds(submit(db));
   await assertFails(submit(db));
 });
-test('expired two-minute visit cannot submit', async () => {
+test('expired two-minute visit or meeting cannot submit', async () => {
   await env.withSecurityRulesDisabled(ctx => setDoc(doc(ctx.firestore(),'attendanceSessions/session1/visits/student'),{startedAt:Timestamp.fromMillis(Date.now()-121000)}));
   await assertFails(submit(studentDb()));
+  await visit(studentDb());
+  await env.withSecurityRulesDisabled(ctx => updateDoc(doc(ctx.firestore(),'attendanceSessions/session1'),{expiresAt:Timestamp.fromMillis(Date.now()-1000)}));
+  await assertFails(submit(studentDb()));
+  await assertFails(visit(studentDb()));
 });
 test('stopped session rejects submissions and client cannot reopen', async () => {
   const db = studentDb(); await visit(db);
@@ -65,7 +69,7 @@ test('stopped session rejects submissions and client cannot reopen', async () =>
 });
 test('owner can create a session and private roster in a single batch', async () => {
   const db = env.authenticatedContext(owner).firestore(), batch = writeBatch(db);
-  batch.set(doc(db,'attendanceSessions/session2'),{ownerUid:owner,open:true,updatedAt:serverTimestamp(),codeEnabled:false});
+  batch.set(doc(db,'attendanceSessions/session2'),{ownerUid:owner,open:true,updatedAt:serverTimestamp(),codeEnabled:false,expiresAt:Timestamp.fromMillis(Date.now()+3600000)});
   batch.set(doc(db,'attendanceSessions/session2/private/code'),{code:''});
   batch.set(doc(db,`attendanceSessions/session2/members/${email}`),{studentId:'SE000001',name:'Test Student'});
   await assertSucceeds(batch.commit());

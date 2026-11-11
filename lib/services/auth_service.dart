@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../models/workspace.dart';
+import 'google_sign_in_setup.dart';
 
 class Identity {
   const Identity(this.uid, this.email);
@@ -19,7 +20,6 @@ abstract class AuthService {
 class FirebaseAuthService implements AuthService {
   FirebaseAuthService(this.auth);
   final FirebaseAuth auth;
-  bool _googleInitialized = false;
   Identity? _identity(User? user) =>
       user == null ? null : Identity(user.uid, user.email ?? '');
   @override
@@ -27,10 +27,7 @@ class FirebaseAuthService implements AuthService {
   @override
   Stream<Identity?> get changes => auth.authStateChanges().map(_identity);
   Future<void> initializeGoogle() async {
-    if (!_googleInitialized) {
-      await GoogleSignIn.instance.initialize();
-      _googleInitialized = true;
-    }
+    await GoogleSignInSetup.ensureInitialized();
   }
 
   @override
@@ -69,7 +66,10 @@ class FirebaseAuthService implements AuthService {
 
   @override
   Future<void> signOut() async {
-    if (!kIsWeb && _googleInitialized) await GoogleSignIn.instance.signOut();
+    if (!kIsWeb && GoogleSignInSetup.started) {
+      await GoogleSignInSetup.ensureInitialized();
+      await GoogleSignIn.instance.signOut();
+    }
     await auth.signOut();
   }
 }

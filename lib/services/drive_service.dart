@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/workspace.dart';
 import 'file_service.dart';
+import 'google_sign_in_setup.dart';
 
 class DriveService {
   DriveService(this.uid);
@@ -18,7 +19,7 @@ class DriveService {
   http.Client? _client;
   bool get connected => _api != null;
   Future<void> connect() async {
-    await GoogleSignIn.instance.initialize();
+    await GoogleSignInSetup.ensureInitialized();
     final account = await GoogleSignIn.instance.authenticate();
     final authorization = await account.authorizationClient.authorizeScopes([
       drive.DriveApi.driveFileScope,

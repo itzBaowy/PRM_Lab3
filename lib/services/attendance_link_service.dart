@@ -1,4 +1,7 @@
 import 'dart:math';
+import 'dart:convert';
+
+import 'package:crypto/crypto.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,7 +32,11 @@ class AttendanceLinkService {
         'Chưa cấu hình địa chỉ trang điểm danh. Hãy cấu hình ATTENDANCE_BASE_URL.',
       );
     }
-    final id = m.linkId ?? db.collection('attendanceSessions').doc().id;
+    final id =
+        m.linkId ??
+        sha256
+            .convert(utf8.encode('${auth.currentUser!.uid}:${m.id}'))
+            .toString();
     final ref = session(id);
     if (m.linkId != null) {
       final previous = await ref.get(const GetOptions(source: Source.server));
@@ -60,6 +67,9 @@ class AttendanceLinkService {
       'open': true,
       'codeEnabled': withCode,
       'updatedAt': FieldValue.serverTimestamp(),
+      'expiresAt': Timestamp.fromDate(
+        DateTime(m.date.year, m.date.month, m.date.day + 1),
+      ),
     });
     batch.set(ref.collection('private').doc('code'), {'code': code ?? ''});
     for (final student in c.students) {

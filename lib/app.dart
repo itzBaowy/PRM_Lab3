@@ -148,58 +148,61 @@ class _SignedInScopeState extends State<SignedInScope> {
             SessionVm(context.read<AuthVm>(), workspace, notifications, drive),
       ),
     ],
-    child: Navigator(
-      key: navigator,
-      onGenerateRoute: (settings) {
-        final a = (settings.arguments as Map<String, String>?) ?? {};
-        final telemetry = context.read<TelemetryService>(),
-            files = context.read<FileService>();
-        final Widget screen;
-        final sessionId = Uri.base.queryParameters['session'];
-        if (sessionId != null && settings.name == '/') {
-          screen = ChangeNotifierProvider(
-            create: (_) => StudentCheckInVm(links, sessionId, telemetry),
-            child: const StudentCheckInScreen(),
-          );
-        } else {
-          screen = switch (settings.name) {
-            '/import' => const ImportScreen(),
-            '/schedule' => ScheduleScreen(classId: a['classId']!),
-            '/attendance' => AttendanceScreen(
-              classId: a['classId']!,
-              meetingId: a['meetingId']!,
-            ),
-            '/history' => HistoryScreen(classId: a['classId']!),
-            '/student' => StudentScreen(
-              classId: a['classId']!,
-              studentId: a['studentId']!,
-            ),
-            '/link' => ChangeNotifierProvider(
-              create: (_) => LinkVm(links, files, telemetry),
-              child: LinkScreen(
+    child: NavigatorPopHandler<Object?>(
+      onPopWithResult: (result) => navigator.currentState?.pop(result),
+      child: Navigator(
+        key: navigator,
+        onGenerateRoute: (settings) {
+          final a = (settings.arguments as Map<String, String>?) ?? {};
+          final telemetry = context.read<TelemetryService>(),
+              files = context.read<FileService>();
+          final Widget screen;
+          final sessionId = Uri.base.queryParameters['session'];
+          if (sessionId != null && settings.name == '/') {
+            screen = ChangeNotifierProvider(
+              create: (_) => StudentCheckInVm(links, sessionId, telemetry),
+              child: const StudentCheckInScreen(),
+            );
+          } else {
+            screen = switch (settings.name) {
+              '/import' => const ImportScreen(),
+              '/schedule' => ScheduleScreen(classId: a['classId']!),
+              '/attendance' => AttendanceScreen(
                 classId: a['classId']!,
                 meetingId: a['meetingId']!,
               ),
-            ),
-            '/export' => ChangeNotifierProvider(
-              create: (_) => ExportVm(
-                ExportService(),
-                files,
-                CloudFileService(FirebaseStorage.instance),
-                telemetry,
-              ),
-              child: ExportScreen(
+              '/history' => HistoryScreen(classId: a['classId']!),
+              '/student' => StudentScreen(
                 classId: a['classId']!,
-                meetingId: a['meetingId']!,
+                studentId: a['studentId']!,
               ),
-            ),
-            '/drive' => const DriveScreen(),
-            '/profile' => const ProfileScreen(),
-            _ => const HomeScreen(),
-          };
-        }
-        return MaterialPageRoute(settings: settings, builder: (_) => screen);
-      },
+              '/link' => ChangeNotifierProvider(
+                create: (_) => LinkVm(links, files, telemetry),
+                child: LinkScreen(
+                  classId: a['classId']!,
+                  meetingId: a['meetingId']!,
+                ),
+              ),
+              '/export' => ChangeNotifierProvider(
+                create: (_) => ExportVm(
+                  ExportService(),
+                  files,
+                  CloudFileService(FirebaseStorage.instance),
+                  telemetry,
+                ),
+                child: ExportScreen(
+                  classId: a['classId']!,
+                  meetingId: a['meetingId']!,
+                ),
+              ),
+              '/drive' => const DriveScreen(),
+              '/profile' => const ProfileScreen(),
+              _ => const HomeScreen(),
+            };
+          }
+          return MaterialPageRoute(settings: settings, builder: (_) => screen);
+        },
+      ),
     ),
   );
 }
